@@ -1,0 +1,111 @@
+
+
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Main -->
+    <div class="flex-auto p-5 sm:p-5">
+      <!-- CONTENT -->
+      <div class="border-2 border-gray rounded-2xl">
+        <div class="w-full rounded mx-auto bg-white py-2 sm:py-5 px-2 sm:px-5 lg:px-5 shadow-xl mb-1 "  >
+            <form (submit)="consultarEquipos()">
+                <div class="container mb-3">
+                <mat-label  class=" text-black  text-sm font-bold mb-2"  for="nombre">Fecha Inicial:</mat-label>
+                <mat-form-field class="w-full sm:w-auto" >
+                    <input readonly matInput [matDatepicker]="picker1" (dateChange)="onFechaInicialSeleccionada($event)">
+                    <mat-datepicker-toggle  matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker class="custom-datepicker" #picker1></mat-datepicker>
+                  </mat-form-field>
+                  <mat-label  class=" text-black  text-sm font-bold mb-2"  for="nombre">Fecha Final:</mat-label>
+                
+                  <mat-form-field class="w-full sm:w-auto" >
+                    <input readonly matInput [matDatepicker]="picker2"  (dateChange)="onFechaFinalSeleccionada($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker class="custom-datepicker" #picker2></mat-datepicker>
+                  </mat-form-field>
+                  <button type="submit" (click)="consultarEquipos()" class="btn btn-primary bg-[#1da1f2]">Consultar equipos</button>
+                  <span class="px-10"></span>
+                  <button type="submit" (click)="back()" class="btn btn-primary bg-[#1da1f2]">Home</button>
+                </div>
+               
+              </form>
+            <mat-table matSort [dataSource]="dataSource">
+
+                <ng-container matColumnDef="Nombre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Nombre
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let equiposDate" data-label="id"> 
+                        {{equiposDate.nombre}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Estadio">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Estadio
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.estadio}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="SitioWeb">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        SitioWeb
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.sitioWeb}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Nacionalidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Nacionalidad
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.nacionalidad}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="AñodeFundación">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Añode Fundación
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.fundacion | date}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Entrenador">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Entrenador
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.entrenador}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Capacidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Capacidad
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.capacidad}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Valor">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Valor
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.valor}} 
+                    </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="displayedColumns">
+                </mat-header-row>
+                <mat-row  
+                *matRowDef="let row ; columns: displayedColumns">                          
+            </mat-row>
+            </mat-table>
+            <div class="text-center py-1"
+            *ngIf="dataSource.data === null ||  dataSource.data?.length === 0">No existen equipos fundados en esas fechas
+         </div> 
+        </div>
+      </div>
+    </div>
+</div>
+
+

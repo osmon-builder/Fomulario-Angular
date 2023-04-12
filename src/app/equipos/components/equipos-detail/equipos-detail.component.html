@@ -1,0 +1,135 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Main -->
+    <div class="flex-auto p-3 sm:p-5">
+        <!-- CONTENT -->
+        <div class="border-2 border-gray rounded-2xl">
+
+
+            <div class="w-full rounded mx-auto bg-white py-1 px-5 lg:px-5 shadow-xl mb-1">
+
+                <form *ngIf="baseFormEquiposService.baseForm" [formGroup]="baseFormEquiposService.baseForm"
+                    class="team-form">
+                    <div class="md:w-1/2 group inline-flex relative sm:w-full">
+                        <h2 class="text-base font-bold text-left">
+                            Detalle
+                        </h2>
+                    </div>
+                    <div class="md:w-1/2 group inline-flex relative sm:w-full justify-end">
+                        <mat-slide-toggle *ngIf="!isAddMode" formControlName="switchEditar" ngModel
+                            (change)="setAutoMode($event)" class="text-sm font-semibold">
+                            Editar
+                        </mat-slide-toggle>
+                    </div>
+
+
+                    <div class="flex mt-2 pb-4 w-full">
+                        <div class="mt-px border-t w-full">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group group">
+                        <mat-label class="  tracking-wide text-black  text-sm font-bold mb-2">
+                            Nombre:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+
+                            <input class="w-full rounded  text-sm text-black" matInput formControlName="nombre"
+                                readonly>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group group">
+                        <mat-label class="tracking-wide text-black  text-sm font-bold mb-2">
+                            Estadio:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+                            <input class="w-full text-black rounded" matInput formControlName="estadio" readonly>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="form-group group ">
+                        <mat-label class="tracking-wide text-black  text-sm font-bold mb-2">
+                            Sitio Web:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+
+                            <input class="w-full text-black rounded" matInput formControlName="sitioWeb" readonly>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group group ">
+                        <mat-label class="tracking-wide text-black  text-sm font-bold mb-2">
+                            Nacionalidad:
+                        </mat-label>
+                        <mat-form-field class="w-full">
+                            <input readonly="" class="w-full text-black rounded text-sm" matInput
+                                formControlName="nacionalidad" />
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="form-group group ">
+                        <mat-label class="tracking-wide text-black  text-sm font-bold mb-2">
+                            Año de fundación:
+                        </mat-label>
+                        <mat-form-field class="w-full">
+                            <input readonly type="text" id="no-fundacion" name="ano-fundacion"
+                                class="w-full text-black rounded text-sm" matInput formControlName="fundacion"
+                                [(ngModel)]="formattedDate" />
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group group ">
+                        <mat-label class="  tracking-wide text-black  text-sm font-bold mb-2">
+                            Entrenador:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+                            <input class="w-full rounded  text-sm text-black" matInput formControlName="entrenador"
+                                readonly>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="form-group group ">
+                        <mat-label class="  tracking-wide text-black  text-sm font-bold mb-2">
+                            Capacidad:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+                            <input class="w-full rounded  text-sm text-black" matInput formControlName="capacidad"
+                                readonly>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="form-group group ">
+                        <mat-label class="tracking-wide text-black  text-sm font-bold mb-2">
+                            Valor:
+                        </mat-label>
+                        <mat-form-field class="w-full disabled" disabled>
+                            <input readonly class="w-full text-black rounded" matInput formControlName="valor">
+                        </mat-form-field>
+                    </div>
+                    <!-- Boton para retornar -->
+                    <div class="flex justify-end px-2 py-0 pb-2 w-full">
+                        <div class="form-group group justify-end">
+                            <button type="button"
+                                class="bg-secondary text-sm font-semibold py-2 px-2 border border-solid text-[#009CD7] border-[#009CD7] rounded-full"
+                                (click)="goBack()">
+                                <mat-label>Volver</mat-label>
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>

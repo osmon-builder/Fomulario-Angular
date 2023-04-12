@@ -1,0 +1,122 @@
+<div class="flex flex-col flex-auto min-w-0">
+    
+    <!-- Main -->
+    <div class="flex-auto sm:p-5">
+   
+        <!-- Contenido -->
+        <div class="border-2 border-gray rounded-2xl">
+
+            <div class="d-flex justify-content-between mb-3">
+                <button *ngIf="isLogged" type="button" class="m-3 text-white bg-primary hover:bg-[#FF8403] font-sm rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mat-mini-fab mat-raised-button "
+                [title]="agregar" 
+                matTooltip="Agregar"
+                (click)="agregar()">
+                <i class="fas fa-plus fa-md text-white" matTooltip="Agregar"></i>
+            </button>
+            <button type="button" class="m-3 text-white bg-primary hover:bg-[#FF8403] font-sm rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mat-mini-fab mat-raised-button "
+            [title]="agregar" 
+            matTooltip="Agregar"
+            (click)="listByDate()">
+            <i class="fa fa-search fa-md text-white" matTooltip="Agregar"></i>
+            <i class="fa fa-calendar ml-3" aria-hidden="true"></i>
+        </button>
+            
+                <button *ngIf="isLogged"  type="button" class="m-3 text-white bg-primary hover:bg-[#FF8403] font-sm rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mat-mini-fab mat-raised-button " (click)="logout()">Logout</button>
+                <button *ngIf="!isLogged" type="button" class="m-3 text-white bg-primary hover:bg-[#FF8403] font-sm rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mat-mini-fab mat-raised-button " (click)="login()">Login</button>
+            </div>
+          
+
+        <div class="table-container mat-elevation-z8 text-sm px-5 bg-white">    
+                                              
+            <mat-table matSort [dataSource]="dataSource">
+
+                <ng-container matColumnDef="Nombre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Nombre
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.nombre}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Estadio">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Estadio
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.estadio}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="SitioWeb">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        SitioWeb
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.sitioWeb}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Nacionalidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Nacionalidad
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.nacionalidad}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="AñodeFundación">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Añode Fundación
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.fundacion | date}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Entrenador">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Entrenador
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.entrenador}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Capacidad">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Capacidad
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.capacidad}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Valor">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header matSortStart="desc"> 
+                        Valor
+                    </mat-header-cell>
+                    <mat-cell class="text-sm" *matCellDef="let element" data-label="id"> 
+                        {{element.valor}} 
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef [ngClass]="'table-custom-actions'" data-label="Acciones"> 
+                       Acciones
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="'table-custom-actions'" data-label="Acciones">
+                        <a *ngIf="isLogged" routerLink="edit/{{element.id}}">
+                            <i class="fa fa-pencil fa-md action-table pr-3" matTooltip="Editar"></i>
+                        </a>
+                        <a routerLink="show/{{element.id}}">
+                            <i class="fa fa-eye fa-md action-table text-[#009CD7] pr-3" matTooltip="Detalle"></i>
+                        </a>
+                        <i *ngIf="isLogged" class="fa fa-trash fa-md  text-[#DB2828] pr-3"
+                         (click)="delete(element)"
+                          matTooltip="Eliminar">
+                        </i>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns">
+                </mat-header-row>
+                <mat-row  
+                *matRowDef="let row ; columns: displayedColumns">                          
+            </mat-row>
+            </mat-table>
+        </div>
+    </div>
+</div>

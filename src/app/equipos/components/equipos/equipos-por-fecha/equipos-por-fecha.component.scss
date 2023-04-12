@@ -1,0 +1,26 @@
+
+.mat-datepicker-panel {
+    top: 100% !important; /* Cambia la posición vertical */
+    left: 0 !important; /* Cambia la posición horizontal */
+  }
+  
+  .mat-calendar {
+    font-size: 14px; /* Cambia el tamaño del texto */
+    line-height: 1.2; /* Cambia el espaciado entre líneas */
+  }
+  
+
+  .custom-datepicker .mat-calendar-content {
+    transform: translateY(-50px);
+  }
+  
+
+  ::ng-deep .mat-datepicker-panel {
+    top: 1000px;
+    bottom: 10px;
+    
+  }
+
+  .mat-datepicker-content-container.ng-tns-c143-2 {
+    width: 100px /* Cambia el ancho a 300px */
+  }

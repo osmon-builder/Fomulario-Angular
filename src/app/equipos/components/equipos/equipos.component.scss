@@ -1,0 +1,23 @@
+// Importa las variables de color primario
+@import "../../../../assets/styles/styles.scss";
+
+mat-list {
+  border: 1px solid $primary-color;
+  background-color: lighten($primary-color, 20%);
+}
+
+
+mat-list-item {
+  color: $primary-color;
+  background-color: $accent-color;
+
+
+  h3 {
+    color: $primary-color;
+  }
+
+
+  span {
+    color: $warn-color;
+  }
+}
